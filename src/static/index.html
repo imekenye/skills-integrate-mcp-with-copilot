@@ -8,11 +8,82 @@
   </head>
   <body>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <div class="header-content">
+        <div class="title-section">
+          <h1>Mergington High School</h1>
+          <h2>Extracurricular Activities</h2>
+        </div>
+        <div class="auth-section">
+          <div id="user-info" class="hidden">
+            <span id="user-display">Welcome, User!</span>
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+          </div>
+          <button id="login-toggle-btn" class="primary-btn">Login</button>
+        </div>
+      </div>
     </header>
 
     <main>
+      <!-- Login Modal -->
+      <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Login to Your Account</h3>
+            <button id="close-login-modal" class="close-btn">&times;</button>
+          </div>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" required placeholder="Enter username" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" required placeholder="Enter password" />
+            </div>
+            <button type="submit" class="primary-btn">Login</button>
+          </form>
+          <div class="auth-demo-info">
+            <p><strong>Demo Accounts:</strong></p>
+            <ul>
+              <li><strong>Student:</strong> username: <code>student</code>, password: <code>student123</code></li>
+              <li><strong>Teacher:</strong> username: <code>teacher</code>, password: <code>teacher123</code></li>
+              <li><strong>Admin:</strong> username: <code>admin</code>, password: <code>admin123</code></li>
+            </ul>
+          </div>
+          <div id="login-message" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- Registration Modal -->
+      <div id="register-modal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Create Account</h3>
+            <button id="close-register-modal" class="close-btn">&times;</button>
+          </div>
+          <form id="register-form">
+            <div class="form-group">
+              <label for="reg-email">Email:</label>
+              <input type="email" id="reg-email" required placeholder="your-email@mergington.edu" />
+            </div>
+            <div class="form-group">
+              <label for="reg-username">Username:</label>
+              <input type="text" id="reg-username" required placeholder="Choose a username" />
+            </div>
+            <div class="form-group">
+              <label for="reg-full-name">Full Name:</label>
+              <input type="text" id="reg-full-name" required placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label for="reg-password">Password:</label>
+              <input type="password" id="reg-password" required placeholder="Choose a password" />
+            </div>
+            <button type="submit" class="primary-btn">Register</button>
+          </form>
+          <div id="register-message" class="hidden"></div>
+        </div>
+      </div>
+
       <section id="activities-container">
         <h3>Available Activities</h3>
         <div id="activities-list">
@@ -21,13 +92,10 @@
         </div>
       </section>
 
-      <section id="signup-container">
+      <!-- Student Signup Section (shown only to students) -->
+      <section id="student-signup-container" class="hidden">
         <h3>Sign Up for an Activity</h3>
         <form id="signup-form">
-          <div class="form-group">
-            <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
-          </div>
           <div class="form-group">
             <label for="activity">Select Activity:</label>
             <select id="activity" required>
@@ -35,14 +103,37 @@
               <!-- Activity options will be loaded here -->
             </select>
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" class="primary-btn">Sign Up</button>
         </form>
-        <div id="message" class="hidden"></div>
       </section>
+
+      <!-- Admin Controls Section (shown only to admins) -->
+      <section id="admin-controls-container" class="hidden">
+        <h3>Teacher Controls</h3>
+        <form id="admin-signup-form">
+          <div class="form-group">
+            <label for="student-email">Student Email:</label>
+            <input type="email" id="student-email" required placeholder="student@mergington.edu" />
+          </div>
+          <div class="form-group">
+            <label for="admin-activity">Select Activity:</label>
+            <select id="admin-activity" required>
+              <option value="">-- Select an activity --</option>
+              <!-- Activity options will be loaded here -->
+            </select>
+          </div>
+          <button type="submit" class="primary-btn">Register Student</button>
+        </form>
+      </section>
+
+      <div id="message" class="hidden"></div>
     </main>
 
     <footer>
-      <p>&copy; 2023 Mergington High School</p>
+      <p>&copy; 2024 Mergington High School</p>
+      <div class="auth-links">
+        <button id="show-register-modal" class="link-btn">Create Account</button>
+      </div>
     </footer>
 
     <script src="app.js"></script>
